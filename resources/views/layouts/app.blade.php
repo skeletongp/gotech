@@ -30,6 +30,19 @@
 <!-- Styles -->
 <link rel="stylesheet" href="{{ mix('css/app.css') }}">
   {{$css}}
+  <style>
+     .input-group
+     {
+        display: flex;
+        align-items: center;
+     }
+     .btn-sidebar{
+        border: none;
+        background-color: transparent;
+     }
+    
+     
+  </style>
 @stop
 
 {{-- Sección de scripts --}}

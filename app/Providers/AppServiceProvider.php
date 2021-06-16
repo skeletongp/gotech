@@ -31,5 +31,11 @@ class AppServiceProvider extends ServiceProvider
             }
             return 0;
         });
+        Blade::if('student', function () {            
+            if (auth()->user() && auth()->user()->rol=='estudiante') {
+                return 1;
+            }
+            return 0;
+        });
     }
 }

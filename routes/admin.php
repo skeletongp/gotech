@@ -7,5 +7,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:sanctum','verified'])->get('/',  [HomeController::class, 'index'])->name('home');
 Route::middleware(['auth:sanctum','verified'])->get('/home',  [HomeController::class, 'index'])->name('main');
-Route::middleware(['auth:sanctum','verified'])->get('/cursos.index',  [CursosController::class, 'cursos_index'])->name('cursos_index');
+Route::middleware(['auth:sanctum','verified'])->get('/cursos',  [CursosController::class, 'cursos_index'])->name('cursos_index');
+Route::middleware(['auth:sanctum','verified'])->get('/cursos/{slug?}',  [CursosController::class, 'cursos_show'])->name('cursos.show');
 Route::middleware(['auth:sanctum','verified'])->post('/cursos.store',  [CursosController::class, 'cursos_store'])->name('cursos_store');

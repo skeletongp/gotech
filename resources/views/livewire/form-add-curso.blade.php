@@ -36,7 +36,7 @@
                     </div>
                 </div>
                 <div class="flex">
-                    <div class="w-4/6">
+                    <div class="w-5/12">
                         <div class=" m-2">
                             <x-jet-label for="none">Foto del curso</x-jet-label>
                             <div class="flex">
@@ -48,7 +48,7 @@
                                             <path d="M0 0h24v24H0z" fill="none" />
                                             <path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z" />
                                         </svg>
-                                        <span class=" text-center cursor-pointer" id="label_input">Seleccionar foto</span>
+                                        <span class=" text-center cursor-pointer" id="label_input">Seleccionar...</span>
 
                                     </label>
                                     <input class="cursor-pointer absolute block opacity-0 pin-r pin-t" type="file"
@@ -64,7 +64,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="w-2/6 m-2 ">
+                    <div class="w-3/12 m-2 ">
                         <x-jet-label for="categoria_id">Categoría</x-jet-label>
                         <select
                             class="w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm w-full"
@@ -75,6 +75,19 @@
                             @endforeach
                         </select>
                         <x-jet-input-error for="categoria_id"></x-jet-input-error>
+
+                    </div>
+                    <div class="w-3/12 m-2 ">
+                        <x-jet-label for="subcategoria_id">Subcategoría</x-jet-label>
+                        <select
+                            class="w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm w-full"
+                            name="subcategoria_id" id="subcategoria_id" wire:model="subcategoria_id">
+                            <option value=""></option>
+                            @foreach ($subcategorias as $subcategoria)
+                                <option value="{{ $subcategoria->id }}">{{ $subcategoria->nombre }}</option>
+                            @endforeach
+                        </select>
+                        <x-jet-input-error for="subcategoria_id"></x-jet-input-error>
 
                     </div>
                 </div>

@@ -20,14 +20,42 @@ class Cursos extends Model
             'cursos.participantes as Participantes',
             'cursos.cantidad as Cantidad',
             'cursos.fotos as Fotos',
+            'cursos.slug as Slug',
             'categorias.id as Categoria',
             'categorias.nombre as idCategoria',
+            'subcategorias.id as SubCategoria',
+            'subcategorias.nombre as idSubCategoria',
         )
         ->join('categorias','cursos.categoria_id','=','categorias.id')
+        ->join('subcategorias','cursos.subcategoria_id','=','subcategorias.id')
         ->where('cursos.is_active','=','1')
         ->orderBy('id','desc')
         ->limit(8)
         ->get()
+        ;
+        return $cursos;
+    }
+    public function cursos_show($slug)
+    {
+        $cursos=Cursos::select(
+            'cursos.id as Id',
+            'cursos.codigo as Codigo',
+            'cursos.nombre as Nombre',
+            'cursos.descripcion as Descripcion',
+            'cursos.participantes as Participantes',
+            'cursos.cantidad as Cantidad',
+            'cursos.fotos as Fotos',
+            'categorias.id as Categoria',
+            'categorias.nombre as idCategoria',
+            'subcategorias.id as SubCategoria',
+            'subcategorias.nombre as idSubCategoria',
+        )
+        ->join('categorias','cursos.categoria_id','=','categorias.id')
+        ->join('subcategorias','cursos.subcategoria_id','=','subcategorias.id')
+        ->where('cursos.is_active','=','1')
+        ->where('cursos.slug','=',$slug)
+        ->orderBy('id','desc')
+        ->first()
         ;
         return $cursos;
     }

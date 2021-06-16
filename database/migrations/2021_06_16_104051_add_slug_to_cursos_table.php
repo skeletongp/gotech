@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVideosTable extends Migration
+class AddSlugToCursosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateVideosTable extends Migration
      */
     public function up()
     {
-        Schema::create('videos', function (Blueprint $table) {
-            $table->id();
-            $table->string('titulo');
-            $table->string('clave');
-        
-            $table->timestamps();
+        Schema::table('cursos', function (Blueprint $table) {
+            $table->string('slug');
         });
     }
 
@@ -29,6 +25,8 @@ class CreateVideosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('videos');
+        Schema::table('cursos', function (Blueprint $table) {
+            $table->dropColumn('slug');
+        });
     }
 }

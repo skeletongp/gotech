@@ -2,8 +2,8 @@
 
     <div class="m-auto lg:px-4 py-2 max-w-md ">
         <div class="bg-white shadow-2xl  border-red-400">
-            <div class="w-full h-48 border-4 border-green-300 mx-auto py-3 bg-cover relative grid items-start pt-4 justify-center px-3"
-                style="background-image: url('varios/darklaptop.jpg')">
+            <div class="w-full h-48 border-4 border-green-300 mx-auto py-3 bg-cover bg-top bg-no-repeat relative grid items-start pt-4 justify-center px-3"
+                style="background-image: url('https://res.cloudinary.com/dboafhu31/image/upload/v1623866886/bright-4357415_960_720_dfeeeu.jpg')">
                 <div>
                     <h2 class="font-bold text-lg text-white uppercase text-center lg:text-2xl ">{{ $curso->Nombre }}
                     </h2>
@@ -26,7 +26,7 @@
                 <div class="user flex justify-between items-center -ml-3 mt-4 mb-2">
                     <div class="user-logo">
                         <img class="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-full mx-4 shadow"
-                            src="cursos_fotos/{{ $curso->Fotos }}" alt="avatar">
+                            src="storage/{{ $curso->Fotos }}" alt="avatar">
                     </div>
                     {{-- Botón de edición --}}
                     @admin
@@ -36,7 +36,17 @@
                         </span>
                     </a>
                     @endadmin
-                    <x-jet-button class="px-1 mx-1 bg-gray-900">Detalles</x-jet-button>
+                    @student
+                    <a role="button"
+                    wire:click="{{$curso_guardado==0? 'addCurso()': 'removeCurso'}}"
+                    title="Añadir a mis cursos"
+                        class="bg-gray-100 w-8 h-8 rounded-full flex justify-center items-center text-green-700 hover:bg-green-700 hover:text-gray-50">
+                        <span class="fas fa-plus ">
+                        </span>
+                    </a>
+                    @endstudent
+                    <a href="{{route('cursos.show',['slug'=>$curso->Slug])}}"
+                        class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition    px-1 mx-1 bg-gray-900">Detalles</a>
                 </div>
             </div>
         </div>

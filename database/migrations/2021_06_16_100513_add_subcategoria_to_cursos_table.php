@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddRateToCursosTable extends Migration
+class AddSubcategoriaToCursosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +14,10 @@ class AddRateToCursosTable extends Migration
     public function up()
     {
         Schema::table('cursos', function (Blueprint $table) {
-            $table->integer('rate1')->default(0);
-            $table->integer('rate2')->default(0);
-            $table->integer('rate3')->default(0);
-            $table->integer('rate4')->default(0);
-            $table->integer('rate5')->default(0);
+            $table->unsignedBigInteger('subcategoria_id')->nullable();
+            $table->foreign('subcategoria_id')
+            ->references('id')
+            ->on('subcategorias');
         });
     }
 
@@ -30,7 +29,7 @@ class AddRateToCursosTable extends Migration
     public function down()
     {
         Schema::table('cursos', function (Blueprint $table) {
-            $table->dropColumn('rate1','rate2','rate3','rate4','rate5');
+           $table->dropColumn('subcategoria_id');
         });
     }
 }
