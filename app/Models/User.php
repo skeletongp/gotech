@@ -71,4 +71,8 @@ class User extends Authenticatable
     {
         return 'user/profile';
     }
+    public function adminlte_role()
+    {
+        return Auth::user()->rol;
+    }
 }

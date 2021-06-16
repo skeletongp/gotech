@@ -7,10 +7,11 @@
 
 {{-- Encabezado --}}
 @section('content_header')
-  <h1 class="uppercase font-bold ml-2 p-3 text-center">
+  <h1 class="uppercase font-bold ml-2 text-center">
    {{$header}}
   </h1>
 @livewireStyles
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
 @stop
 
@@ -24,8 +25,8 @@
 {{-- Sección de fuentes y estilos --}}
 @section('css')
    <!-- Fonts -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@1.3.5/dist/full.css" rel="stylesheet" type="text/css" />
 <!-- Styles -->
 <link rel="stylesheet" href="{{ mix('css/app.css') }}">
   {{$css}}
@@ -33,9 +34,8 @@
 
 {{-- Sección de scripts --}}
 @section('js')
-
+<script src="{{ mix('js/app.js') }}" defer></script>
 @stack('modals')
-
    @livewireScripts
 {{$js}}
 @stop

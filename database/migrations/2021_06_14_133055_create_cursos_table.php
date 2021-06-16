@@ -15,6 +15,16 @@ class CreateCursosTable extends Migration
     {
         Schema::create('cursos', function (Blueprint $table) {
             $table->id();
+            $table->string('codigo');
+            $table->string('nombre');
+            $table->string('descripcion');
+            $table->bigInteger('participantes');
+            $table->bigInteger('cantidad');
+            $table->tinyInteger('is_active');
+            $table->unsignedBigInteger('categoria_id');
+            $table->foreign('categoria_id')
+            ->references('id')
+            ->on('categorias');
             $table->timestamps();
         });
     }

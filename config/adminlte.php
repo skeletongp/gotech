@@ -127,9 +127,9 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '<bg-blue-3></bg-blue-3>00 rounded-xl mx-1',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-light-primary elevation-4',
+    'classes_sidebar' => 'sidebar-light-dark elevation-4',
     'classes_sidebar_nav' => '',
-    'classes_topnav' => 'navbar-white navbar-light',
+    'classes_topnav' => 'navbar-black navbar-dark',
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
 
@@ -224,6 +224,8 @@ return [
     |
     */
 
+    /* Los permisos para el campo can están en App\Providers\AuthServicesProvider */
+
     'menu' => [
         // Navbar items:
         [
@@ -238,35 +240,56 @@ return [
             'text' => 'Búsqueda',
         ],
         // Sidebar items:
-        ['header' => 'PARA APRENDER',
-        
+        /* ADMINISTRADOR */
+        [
+            'header' => 'ADMINISTRAR',
+            'can' => 'administrar'
+        ],
+        /* ESTUDIAR */
+        [
+            'header' => 'VISTA GENERAL',
+            'can' => 'estudiar'
         ],
         [
+            'text' => 'Cursos',
+            'route' => 'cursos_index',
+            'icon' => 'fas fa-fw fa-graduation-cap',
+        ],
+        [
+            'text' => 'Estudiantes',
+            'url' => '#',
+            'icon' => 'fas fa-fw fa-user',
+            'can'=>'administrar'
+        ],
+        [],
+
+        ['header' => 'PARA APRENDER'],
+        [
             'text' => 'Microsoft Office',
-            'icon'=>'fab fa-fw fa-windows',
+            'icon' => 'fab fa-fw fa-windows',
             'submenu' => [
                 [
-                    'text'=>'Excel',
-                    'route'  => 'home',
+                    'text' => 'Excel',
+                    'url'  => '#',
                     "icon" => "fas fa-fw fa-file-excel",
                     'icon_color' => 'green-400'
                 ],
                 [
-                    'text'=>'Powerpoint',
-                    'route'  => 'home',
+                    'text' => 'Powerpoint',
+                    'url'  => '#',
                     "icon" => "fas fa-fw fa-file-powerpoint",
-                    'icon_color' => 'red-500' 
+                    'icon_color' => 'red-500'
                 ],
                 [
-                    'text'=>'Project',
-                    'route'  => 'home',
+                    'text' => 'Project',
+                    'url'  => '#',
                     "icon" => "fas fa-fw fa-file-powerpoint",
                     'icon_color' => 'green-500'
                 ],
-               
+
                 [
-                    'text'=>'Word',
-                    'route'  => 'home',
+                    'text' => 'Word',
+                    'url'  => '#',
                     "icon" => "fas fa-fw fa-file-word",
                     'icon_color' => 'blue-400'
                 ],
@@ -274,23 +297,23 @@ return [
         ],
         [
             'text' => 'Lengua y Escritura',
-            'icon'=>'fas fa-fw fa-spell-check',
+            'icon' => 'fas fa-fw fa-spell-check',
             'submenu' => [
                 [
-                    'text'=>'Gramática',
-                    'route'  => 'home',
+                    'text' => 'Gramática',
+                    'url'  => '#',
                     "icon" => "fas fa-fw fa-spell-check",
                     'icon_color' => 'blue-600'
                 ],
                 [
-                    'text'=>'Lectura',
-                    'route'  => 'home',
+                    'text' => 'Lectura',
+                    'url'  => '#',
                     "icon" => "fas fa-fw fa-book",
-                    'icon_color' => 'blue-400' 
+                    'icon_color' => 'blue-400'
                 ],
                 [
-                    'text'=>'Ortografía',
-                    'route'  => 'home',
+                    'text' => 'Ortografía',
+                    'url'  => '#',
                     "icon" => "fas fa-fw fa-signature",
                     'icon_color' => 'indigo-700'
                 ],
