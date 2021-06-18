@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CursosRequest;
+use App\Models\Curso_User;
 use App\Models\Curso_Video;
 use App\Models\Cursos;
 use Illuminate\Support\Facades\Storage;
@@ -15,9 +16,10 @@ class CursosController extends Controller
     {
         $cursostotal=new Cursos();
         $cursos=$cursostotal->cursos();
+        $curso1=Cursos::all()->random();
         $cursos2=Cursos::all();
         $frase=Frases::all()->random();
-        return view('admin.cursos.index', compact('cursos','cursos2', 'frase'));
+        return view('admin.cursos.index', compact('cursos','cursos2', 'frase','curso1'));
     }
 
     public function cursos_show($slug)
@@ -26,9 +28,15 @@ class CursosController extends Controller
         $curso=$cursos->cursos_show($slug);
         $curso_video=new Curso_Video();
     
-        $videos=$curso_video->curso_video($curso->Id);
         $frase=Frases::all()->random();
-        return view('admin.cursos.show', compact('curso', 'videos', 'frase'));
+        return view('admin.cursos.show', compact('curso', 'frase', 'slug'));
     }
-   
+    public function miscursos()
+    {
+        $cursostotal=new Curso_User();
+        $cursos=$cursostotal->miscursos();
+        $cursos2=Cursos::all();
+        $frase=Frases::all()->random();
+        return view('admin.cursos.miscursos', compact('cursos','cursos2', 'frase'));
+    }
 }

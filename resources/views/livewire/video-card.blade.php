@@ -1,61 +1,58 @@
 <div class="w-full xl:mx-24">
     <!-- component -->
-    <h1 class="uppercase text-xl text-center mb-4 font-bold">{{ $nombre }}</h1>
-
-    <div
-        class="bg-white p-2 w-full sm:p-4 h-full rounded-2xl shadow-lg flex flex-col justify-center sm:flex-row gap-5 select-none vide-wrapper">
-        <div class="sm:h-full rounded-xl bg-gray-100 bg-center bg-cover mb-8 xl:mb-2 flex items-center w-full"
-            style="height:360px !important">
-            <iframe src="https://www.youtube.com/embed/{{ $clave }}" title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen class="block w-full h-full"></iframe>
+    <div class="mt-2 mb-4 flex items-center justify-between">
+        <div class="w-6/12 mr-8">
+            <x-jet-input class="w-full" type="search" wire:model="search"
+                placeholder="Ingrese un título y presione ENTER para buscar"></x-jet-input>
         </div>
-        <div class="hidden xl:flex flex-col  gap-2 p-1 w-1/3 items-center justify-center">
-            <div class="flex justify-center items-center h-full">
-                <div>
-                    <h1 class="text-lg sm:text-xl font-bold uppercase text-center text-gray-900">
-                        {{ $titulo }}
-                    </h1>
-                    <p class="text-gray-900 text-lg text-center mt-4    sm:text-base line-clamp-3">
-                        {{ $descripcion }}
-                    </p>
+        <div class="w-2/4">
+            {{ $videos->links() }}
+        </div>
+
+    </div>
+
+    <div>
+        @if ($videos->count())
+            <div class="h-100 w-full items-center justify-between bg-teal-lightest font-sans">
+                <div class="bg-white rounded shadow p-6 m-1 mx-0 w-full ">
+
+                    <div class="">
+                        @foreach ($videos as $video)
+                            <div class="flex mb-4 items-center">
+                                <p class="w-3/4 text-gray-900 font-bold">{{ $video->Titulo }}</p>
+                                <span
+                                    class=" text-center w-1/4 p-2 ml-2 border-2 rounded text-green font-bold border-red hover:text-white hover:bg-red">
+                                    @livewire('view-video', ['video' => $video], key($video->Clave))
+                                </span>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
-            <div class="flex gap-4 mt-auto">
-                <span
-                    class=' flex items-center gap-1 sm:text-lg border border-gray-300 px-3 py-1 rounded-full hover:bg-gray-50 transition-colors focus:bg-gray-100 focus:outline-none focus-visible:border-gray-500 cursor-default'>
-                    <span class="fas fa-thumbs-up text-blue-400 mr-2"></span>
-                    <span>{{ $likes }}</span>
-                </span>
-                <span
-                    class='cursor-default	 flex items-center gap-1 sm:text-lg border border-gray-300 px-3 py-1 rounded-full hover:bg-gray-50 transition-colors focus:bg-gray-100 focus:outline-none focus-visible:border-gray-500'>
-                    <span class="fas fa-comment-dots text-blue-300 mr-2"></span>
-                    <span>{{ $comentarios ? $comentarios : 0 }}</span>
-                </span>
-                <button title="Marcar como visto" wire:click="{{ $visto->count() ? 'no_visto' : 'visto' }}"
-                    class='flex items-center gap-1 sm:text-lg border border-gray-300 px-3 py-1 rounded-full hover:bg-gray-50 transition-colors focus:bg-gray-100 focus:outline-none focus-visible:border-gray-500'>
-                    <span class="fas fa-eye {{ $visto->count() ? 'text-green-300' : 'text-red-300' }} mr-2"></span>
-                    <span>{{ $vistaCant }}</span>
-                </button>
+        @else
+            <div class="flex h-full items-center justify-center w-full">
+                <h1 class=" my-8 font-bold uppercase text-center xl:my-48 xl:text-xl select-none">NO SE HA ENCONTRADO
+                    CONTENIDO PARA LA BÚSQUEDA</h1>
             </div>
-        </div>
-        @slot('css')
-            <style>
-                .video-wrapper {
-                    position: relative;
-                    padding-bottom: 56.25%;
-                    /* 16:9 */
-                    padding-top: 25px;
-                }
-
-                .video-wrapper iframe {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                }
-
-            </style>
-        @endslot
+        @endif
     </div>
+    @slot('css')
+        <style>
+            .video-wrapper {
+                position: relative;
+                padding-bottom: 56.25%;
+                /* 16:9 */
+                padding-top: 25px;
+            }
+
+            .video-wrapper iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+        </style>
+    @endslot
+</div>

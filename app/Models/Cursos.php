@@ -35,6 +35,30 @@ class Cursos extends Model
         ;
         return $cursos;
     }
+    public function cursos_todos()
+    {
+        $cursos=Cursos::select(
+            'cursos.id as Id',
+            'cursos.codigo as Codigo',
+            'cursos.nombre as Nombre',
+            'cursos.descripcion as Descripcion',
+            'cursos.participantes as Participantes',
+            'cursos.cantidad as Cantidad',
+            'cursos.fotos as Fotos',
+            'cursos.slug as Slug',
+            'categorias.id as Categoria',
+            'categorias.nombre as idCategoria',
+            'subcategorias.id as SubCategoria',
+            'subcategorias.nombre as idSubCategoria',
+        )
+        ->join('categorias','cursos.categoria_id','=','categorias.id')
+        ->join('subcategorias','cursos.subcategoria_id','=','subcategorias.id')
+        ->where('cursos.is_active','=','1')
+        ->orderBy('id','desc')
+        ->get()
+        ;
+        return $cursos;
+    }
     public function cursos_show($slug)
     {
         $cursos=Cursos::select(
@@ -45,6 +69,7 @@ class Cursos extends Model
             'cursos.participantes as Participantes',
             'cursos.cantidad as Cantidad',
             'cursos.fotos as Fotos',
+            'cursos.slug as Slug',
             'categorias.id as Categoria',
             'categorias.nombre as idCategoria',
             'subcategorias.id as SubCategoria',
@@ -54,7 +79,6 @@ class Cursos extends Model
         ->join('subcategorias','cursos.subcategoria_id','=','subcategorias.id')
         ->where('cursos.is_active','=','1')
         ->where('cursos.slug','=',$slug)
-        ->orderBy('id','desc')
         ->first()
         ;
         return $cursos;
@@ -71,7 +95,8 @@ class Cursos extends Model
        ->where('id','=',$id)
        ->first()
        ;
-        $primero=$curso->Uno*1
+        if ($curso) {
+            $primero=$curso->Uno*1
         +$curso->Dos*2
         +$curso->Tres*3
         +$curso->Cuatro*4
@@ -90,5 +115,9 @@ class Cursos extends Model
             return  ["rate"=>0, "total"=>0];
         }
 
+        } else {
+            return ["rate"=>0, "total"=>0];
+        }
+        
     }
 }

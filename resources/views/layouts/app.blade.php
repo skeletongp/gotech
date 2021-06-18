@@ -40,8 +40,14 @@
         border: none;
         background-color: transparent;
      }
-    
-     
+    .dropdown-toggle{
+       display: flex !important;
+    }
+     .user-header{
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+     }
   </style>
 @stop
 

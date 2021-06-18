@@ -1,50 +1,20 @@
 <?php
 
+/* Los valores como la foto de usuario y y el rol los
+obtiene del modelo User en App\Models\User*/
+
 return [
 
-    /*
-    |--------------------------------------------------------------------------
-    | Title
-    |--------------------------------------------------------------------------
-    |
-    | Here you can change the default title of your admin panel.
-    |
-    | For detailed instructions you can look the title section here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
-    |
-    */
-
+    /* Títulos para la página */
     'title' => '',
     'title_prefix' => 'Gotech | ',
     'title_postfix' => '',
 
-    /*
-    |--------------------------------------------------------------------------
-    | Favicon
-    |--------------------------------------------------------------------------
-    |
-    | Here you can activate the favicon.
-    |
-    | For detailed instructions you can look the favicon section here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
-    |
-    */
-
+    /* Configuración del favion */
     'use_ico_only' => true,
     'use_full_favicon' => false,
 
-    /*
-    |--------------------------------------------------------------------------
-    | Logo
-    |--------------------------------------------------------------------------
-    |
-    | Here you can change the logo of your admin panel.
-    |
-    | For detailed instructions you can look the logo section here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
-    |
-    */
-
+    /* Personalización de la parte del logo */
     'logo' => '<b>Go</b>TECH',
     'logo_img' => 'imgs/gotechlogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
@@ -52,37 +22,15 @@ return [
     'logo_img_xl_class' => 'brand-image-xs',
     'logo_img_alt' => 'Gotech',
 
-    /*
-    |--------------------------------------------------------------------------
-    | User Menu
-    |--------------------------------------------------------------------------
-    |
-    | Here you can activate and change the user menu.
-    |
-    | For detailed instructions you can look the user menu section here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
-    |
-    */
-
+    /* Personalización del botón de usuario */
     'usermenu_enabled' => true,
     'usermenu_header' => true,
-    'usermenu_header_class' => 'bg-info',
-    'usermenu_image' => false,
+    'usermenu_header_class' => 'bg-info text-center',
+    'usermenu_image' => true,
     'usermenu_desc' => true,
     'usermenu_profile_url' => true,
 
-    /*
-    |--------------------------------------------------------------------------
-    | Layout
-    |--------------------------------------------------------------------------
-    |
-    | Here we change the layout of your admin panel.
-    |
-    | For detailed instructions you can look the layout section here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Layout-and-Styling-Configuration
-    |
-    */
-
+    /* Personalización del Layout */
     'layout_topnav' => null,
     'layout_boxed' => null,
     'layout_fixed_sidebar' => true,
@@ -90,37 +38,15 @@ return [
     'layout_fixed_footer' => true,
     'layout_dark_mode' => null,
 
-    /*
-    |--------------------------------------------------------------------------
-    | Authentication Views Classes
-    |--------------------------------------------------------------------------
-    |
-    | Here you can change the look and behavior of the authentication views.
-    |
-    | For detailed instructions you can look the auth classes section here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Layout-and-Styling-Configuration
-    |
-    */
-
+    /* Clases para la parte de autentificación */
     'classes_auth_card' => 'card-outline card-info',
-    'classes_auth_header' => '',
+    'classes_auth_header' => 'bg-gradient-dark',
     'classes_auth_body' => '',
     'classes_auth_footer' => '',
     'classes_auth_icon' => '',
-    'classes_auth_btn' => 'btn-flat btn-primary',
+    'classes_auth_btn' => 'btn-flat bg-dark rounded-lg ',
 
-    /*
-    |--------------------------------------------------------------------------
-    | Admin Panel Classes
-    |--------------------------------------------------------------------------
-    |
-    | Here you can change the look and behavior of the admin panel.
-    |
-    | For detailed instructions you can look the admin panel classes here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Layout-and-Styling-Configuration
-    |
-    */
-
+    /* Clases para la plantilla */
     'classes_body' => '',
     'classes_brand' => '',
     'classes_brand_text' => '',
@@ -133,18 +59,7 @@ return [
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
 
-    /*
-    |--------------------------------------------------------------------------
-    | Sidebar
-    |--------------------------------------------------------------------------
-    |
-    | Here we can modify the sidebar of the admin panel.
-    |
-    | For detailed instructions you can look the sidebar section here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Layout-and-Styling-Configuration
-    |
-    */
-
+    /* Personalización del menú principal */
     'sidebar_mini' => 'lg',
     'sidebar_collapse' => false,
     'sidebar_collapse_auto_size' => false,
@@ -155,38 +70,16 @@ return [
     'sidebar_nav_accordion' => true,
     'sidebar_nav_animation_speed' => 300,
 
-    /*
-    |--------------------------------------------------------------------------
-    | Control Sidebar (Right Sidebar)
-    |--------------------------------------------------------------------------
-    |
-    | Here we can modify the right sidebar aka control sidebar of the admin panel.
-    |
-    | For detailed instructions you can look the right sidebar section here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Layout-and-Styling-Configuration
-    |
-    */
-
+    /* Personalización del menú de la Derecha */
     'right_sidebar' => true,
-    'right_sidebar_icon' => 'fas fa-user',
+    'right_sidebar_icon' => 'fas fa-cog',
     'right_sidebar_theme' => 'dark',
     'right_sidebar_slide' => true,
     'right_sidebar_push' => false,
     'right_sidebar_scrollbar_theme' => 'os-theme-light',
     'right_sidebar_scrollbar_auto_hide' => 'l',
 
-    /*
-    |--------------------------------------------------------------------------
-    | URLs
-    |--------------------------------------------------------------------------
-    |
-    | Here we can modify the url settings of the admin panel.
-    |
-    | For detailed instructions you can look the urls section here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
-    |
-    */
-
+    /* Configuración de las url pretedeterminadas */
     'use_route_url' => false,
     'dashboard_url' => 'home',
     'logout_url' => 'logout',
@@ -196,36 +89,15 @@ return [
     'password_email_url' => 'password/email',
     'profile_url' => false,
 
-    /*
-    |--------------------------------------------------------------------------
-    | Laravel Mix
-    |--------------------------------------------------------------------------
-    |
-    | Here we can enable the Laravel Mix option for the admin panel.
-    |
-    | For detailed instructions you can look the laravel mix section here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Other-Configuration
-    |
-    */
 
+    /* Para desactivar bootstrap y utilizar mi propio CSS NO CAMBIAR */
     'enabled_laravel_mix' => false,
     'laravel_mix_css_path' => 'css/app.css',
     'laravel_mix_js_path' => 'js/app.js',
 
-    /*
-    |--------------------------------------------------------------------------
-    | Menu Items
-    |--------------------------------------------------------------------------
-    |
-    | Here we can modify the sidebar/top navigation of the admin panel.
-    |
-    | For detailed instructions you can look here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Menu-Configuration
-    |
-    */
+
 
     /* Los permisos para el campo can están en App\Providers\AuthServicesProvider */
-
     'menu' => [
         // Navbar items:
         [
@@ -239,12 +111,14 @@ return [
             'type' => 'sidebar-menu-search',
             'text' => 'Búsqueda',
         ],
-        // Sidebar items:
+        
+        
         /* ADMINISTRADOR */
         [
             'header' => 'ADMINISTRAR',
             'can' => 'administrar'
         ],
+
         /* ESTUDIAR */
         [
             'header' => 'VISTA GENERAL',
@@ -256,11 +130,19 @@ return [
             'icon' => 'fas fa-fw fa-graduation-cap',
         ],
         [
+            'text' => 'Mis Cursos',
+            'route' => 'cursos_miscursos',
+            'icon' => 'fas fa-fw fa-graduation-cap',
+            /*   'can'=>'estudiar' */
+        ],
+
+        [
             'text' => 'Estudiantes',
             'url' => '#',
             'icon' => 'fas fa-fw fa-user',
-            'can'=>'administrar'
+            'can' => 'administrar'
         ],
+
         [],
 
         ['header' => 'PARA APRENDER'],
@@ -364,7 +246,7 @@ return [
 
     'plugins' => [
         'Datatables' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
@@ -384,7 +266,7 @@ return [
             ],
         ],
         'Select2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
@@ -399,7 +281,7 @@ return [
             ],
         ],
         'Chartjs' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
@@ -419,7 +301,7 @@ return [
             ],
         ],
         'Pace' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'css',

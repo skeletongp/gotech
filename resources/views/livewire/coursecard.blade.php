@@ -26,7 +26,7 @@
                 <div class="user flex justify-between items-center -ml-3 mt-4 mb-2">
                     <div class="user-logo">
                         <img class="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-full mx-4 shadow"
-                            src="storage/{{ $curso->Fotos }}" alt="avatar">
+                            src="../storage/{{ $curso->Fotos }}" alt="avatar">
                     </div>
                     {{-- Botón de edición --}}
                     @admin
@@ -37,17 +37,39 @@
                     </a>
                     @endadmin
                     @student
-                    <a role="button"
-                    wire:click="{{$curso_guardado==0? 'addCurso()': 'removeCurso'}}"
-                    title="Añadir a mis cursos"
-                        class="bg-gray-100 w-8 h-8 rounded-full flex justify-center items-center text-green-700 hover:bg-green-700 hover:text-gray-50">
-                        <span class="fas fa-plus ">
+                    <a role="button" wire:click="addCurso({{ $curso->Id }}, {{ $curso }})"
+                        title="{{ $curso_guardado ? 'Remover de mis cursos ' : 'Añadir a mis cursos' }} "
+                        class="cursor-pointer bg-gray-100 w-8 h-8 rounded-full flex justify-center items-center hover:bg-green-700 hover:text-gray-50">
+                        <span
+                            class="fas {{ $curso_guardado ? 'fa-minus text-red-700 ' : 'fa-plus text-green-700 ' }} ">
                         </span>
                     </a>
                     @endstudent
-                    <a href="{{route('cursos.show',['slug'=>$curso->Slug])}}"
+                    <a href="{{ route('cursos.show', ['slug' => $curso->Slug]) }}"
                         class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition    px-1 mx-1 bg-gray-900">Detalles</a>
                 </div>
+            </div>
+            <div class="m-2 mt-1 pb-3 flex items-center justify-end">
+                <p>{{$user_vote==0? 'Califica este curso': 'Ya calificaste este curso'}}</p>
+                {{-- {{   dd($user_vote)}} --}}
+                @if ($user_vote == 0)
+                    <span wire:click="votar(1, {{ $curso->Id }})" role="button"
+                        class="fas fa-star hover:text-yellow-400 cursor-pointer  ml-4"></span>
+                    <span wire:click="votar(2, {{ $curso->Id }})" role="button"
+                        class="fas fa-star  hover:text-yellow-400 cursor-pointer  "></span>
+                    <span wire:click="votar(3, {{ $curso->Id }})" role="button"
+                        class="fas fa-star hover:text-yellow-400 cursor-pointer  "></span>
+                    <span wire:click="votar(4, {{ $curso->Id }})" role="button"
+                        class="fas fa-star  hover:text-yellow-400 cursor-pointer "></span>
+                    <span wire:click="votar(5, {{ $curso->Id }})" role="button"
+                        class="fas fa-star hover:text-yellow-400 cursor-pointer'"></span>
+                @else
+                    <span class="fas fa-star text-gray-200   ml-4"></span>
+                    <span class="fas fa-star  text-gray-200 "></span>
+                    <span class="fas fa-star text-gray-200  "></span>
+                    <span class="fas fa-star  text-gray-200 "></span>
+                    <span class="fas fa-star text-gray-200 "></span>
+                @endif
             </div>
         </div>
     </div>
