@@ -17,9 +17,17 @@
                 <div class="bg-white rounded shadow p-6 m-1 mx-0 w-full ">
 
                     <div class="">
+                        
                         @foreach ($videos as $video)
+                     
                             <div class="flex mb-4 items-center">
-                                <p class="w-3/4 text-gray-900 font-bold">{{ $video->Titulo }}</p>
+                                <p class="w-3/4 text-gray-900 font-bold text-lg flex items-center">
+                                    <span 
+                                    class="fas fa-angle-double-right mr-2 
+                                    {{App\Models\User_Video::where('user_id','=',Auth::user()->id)
+                                    ->where('video_id','=',$video->idVideo)->get()
+                                    ->count()>0? 'text-green-500': 'text-red-500'}}">
+                                    </span> {{ $video->Titulo }}</p>
                                 <span
                                     class=" text-center w-1/4 p-2 ml-2 border-2 rounded text-green font-bold border-red hover:text-white hover:bg-red">
                                     @livewire('view-video', ['video' => $video], key($video->Clave))

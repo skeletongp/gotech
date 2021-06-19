@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserVideoTable extends Migration
+class CreateCommentResponseTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,19 @@ class CreateUserVideoTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_video', function (Blueprint $table) {
+        Schema::create('comment_response', function (Blueprint $table) {
             $table->id();
+            $table->string('respuesta');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('video_id');
+            $table->unsignedBigInteger('comment_id');
             $table->foreign('user_id')
             ->references('id')
             ->on('users')
             ->onDelete('cascade')
             ->onUpdate('cascade');
-            $table->foreign('video_id')
+            $table->foreign('comment_id')
             ->references('id')
-            ->on('videos')
+            ->on('comment_video')
             ->onDelete('cascade')
             ->onUpdate('cascade');
             $table->timestamps();
@@ -38,6 +39,6 @@ class CreateUserVideoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_video');
+        Schema::dropIfExists('comment_response');
     }
 }

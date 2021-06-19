@@ -150,6 +150,7 @@ return [
         'nombre'=>'Nombre',
         'codigo'=>'Código',
         'categoria_id'=>'Categoría',
+        'clave'=>'URL del Video',
         'descripcion'=>'Descripción',
         'id_estudio'=>"Estudio",
         'id_supervisor'=>"Supervisor",

@@ -4,7 +4,7 @@
         {{ $curso->Nombre }}
     @endslot
     @slot('header')
-        Bienvenido al curso {{ $curso->Nombre }}
+        Bienvenido al curso: {{ $curso->Nombre }}
     @endslot
     </div>
     <div class="inline">
@@ -17,16 +17,30 @@
             </div>
             <div class="w-full xl:w-2/3 flex shadow-md items-center xl:py-16 mb-16 h-full">
                 @livewire('video-card',
-                ['slug'=>$slug, "cursos"=>$curso], key($curso->Id))
+                [ 'slug'=>$slug, "cursos"=>$curso], key($curso->Id))
             </div>
         </div>
     </div>
-        
-    @if (session('agregado'))
+    @admin
+    @livewire('form-add-video', ['slug'=>$slug, 'cursoId' => $curso->Id], key($Curso->Id))
+
+    @endadmin
+    @if (session('error'))
+        <div class="container fixed bottom-1 right-1 z-20 w-max .slide-left" id="alertbox">
+            <div class="container bg-red-200 flex items-center text-gray-900 font-bold px-4 py-3 relative mx-4"
+                role="alert">
+                <p class="text-lg">{{ session('error') }}</p>
+                <span class="absolute top-0 bottom-0 right-0 px-4 py-3 closealertbutton cursor-pointer">
+                    <span class="fas fa-times text-blue-700"></span>
+                </span>
+            </div>
+        </div>
+    @endif
+    @if (session('success'))
         <div class="container fixed bottom-1 right-1 z-20 w-max .slide-left" id="alertbox">
             <div class="container bg-green-100 flex items-center text-gray-900 font-bold px-4 py-3 relative mx-4"
                 role="alert">
-                <p class="text-lg">{{ session('agregado') }}</p>
+                <p class="text-lg">{{ session('success') }}</p>
                 <span class="absolute top-0 bottom-0 right-0 px-4 py-3 closealertbutton cursor-pointer">
                     <span class="fas fa-times text-blue-700"></span>
                 </span>

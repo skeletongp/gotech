@@ -11,6 +11,7 @@ use Livewire\Component;
 
 class Coursecard extends Component
 {
+    /* REcibe el objeto curso */
     public $curso, $cursoId;
     public function render()
     {
@@ -23,28 +24,22 @@ class Coursecard extends Component
         $user_vote=$user_vote_model->user_vote($this->curso->Id);
         return view('livewire.coursecard', compact('rating', 'curso_guardado', 'user_vote'));
     }
-    public function addCurso($cursoId, $curso)
+    public function addCurso($cursoId)
     {
         $curso_user_model=new Curso_User();
-        $curso=Cursos::find($cursoId)->first();
+        $curso=Cursos::where('id','=',$cursoId)->first();
         $curso_guardado=$curso_user_model->curso_user($cursoId);
         $cursos_model=new Cursos();
-        $este_curso=$cursos_model->cursos_show($curso->Slug);
-        dd($este_curso);
-
+        $este_curso=$cursos_model->cursos_show($curso->slug);
         $this->curso=$este_curso;
         if (!$curso_guardado) {
            $curso_nuevo= new Curso_User();
            $curso_nuevo->curso_id=$cursoId;
            $curso_nuevo->user_id=Auth::user()->id;
            $curso_nuevo->save();
-           session()->flash('agregado', 'Curso añadido exitosamente');
-        /* return redirect('/cursos/'.$curso->slug); */
 
         } else {
            Curso_User::destroy($curso_guardado->Id);
-           session()->flash('eliminado', 'Curso retirado exitosamente');
-       /*  return redirect('/cursos/'.$curso->slug); */
 
         }
     }

@@ -24,7 +24,7 @@ class Curso_Video extends Model
         ->join('cursos', 'curso_video.curso_id','cursos.id')
         ->where('cursos.id','=', $id)
         ->where('videos.titulo','like', '%'.$search.'%')
-        ->paginate(10);
+        ->paginate(5);
         return $video;
     }
     public function video($id)

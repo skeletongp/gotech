@@ -22,7 +22,7 @@ class VideoCard extends Component
         $curso=$cursos->cursos_show($this->slug);
         $curso_video=new Curso_Video();
     
-        $videos=$curso_video->curso_video($curso->Id, $this->search);
+        $videos=$curso_video->curso_video($curso['Id'], $this->search);
         return view('livewire.video-card', compact('cursos','videos'));
     }
    

@@ -133,7 +133,7 @@ return [
             'text' => 'Mis Cursos',
             'route' => 'cursos_miscursos',
             'icon' => 'fas fa-fw fa-graduation-cap',
-            /*   'can'=>'estudiar' */
+            'can'=>'estudiar'
         ],
 
         [

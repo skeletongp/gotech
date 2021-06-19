@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="m-2 mt-1 pb-3 flex items-center justify-end">
-                <p>{{$user_vote==0? 'Califica este curso': 'Ya calificaste este curso'}}</p>
+                <p style="min-height: 25px !important">{{$user_vote==0? 'Califica este curso': ''}}</p>
                 {{-- {{   dd($user_vote)}} --}}
                 @if ($user_vote == 0)
                     <span wire:click="votar(1, {{ $curso->Id }})" role="button"
@@ -64,11 +64,7 @@
                     <span wire:click="votar(5, {{ $curso->Id }})" role="button"
                         class="fas fa-star hover:text-yellow-400 cursor-pointer'"></span>
                 @else
-                    <span class="fas fa-star text-gray-200   ml-4"></span>
-                    <span class="fas fa-star  text-gray-200 "></span>
-                    <span class="fas fa-star text-gray-200  "></span>
-                    <span class="fas fa-star  text-gray-200 "></span>
-                    <span class="fas fa-star text-gray-200 "></span>
+                    
                 @endif
             </div>
         </div>

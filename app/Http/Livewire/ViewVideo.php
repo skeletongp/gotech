@@ -23,7 +23,10 @@ class ViewVideo extends Component
       $user_like= new User_Likes();
       $likes=$user_like->likes($video['idVideo']);
       $isLiked=$user_like->isLiked($video['idVideo']);
-      return view('livewire.view-video', compact('likes', 'isLiked'));
+      $isVisto=User_Video::where('user_id','=',Auth::user()->id)
+        ->where('video_id','=',$video->idVideo)->get()
+        ->count()>0;
+      return view('livewire.view-video', compact('likes', 'isLiked','isVisto'));
     }
     public function visto($clave, $idVideo)
     {
@@ -69,7 +72,9 @@ class ViewVideo extends Component
         $user_like->save();
         
       } else {
-         # code...
+         $user_like=User_Likes::where('video_id','=',$videoId)
+         ->where('user_id','=',Auth::user()->id);
+         $user_like->delete();
       }
       
     }
